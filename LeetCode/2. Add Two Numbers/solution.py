@@ -32,7 +32,6 @@ class Solution:
             
         return l3
 
-
 def printLL(ll):
     temp = []
     while ll:
