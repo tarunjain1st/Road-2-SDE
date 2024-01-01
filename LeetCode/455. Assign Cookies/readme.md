@@ -21,20 +21,15 @@ As we need to pick minimum size cookies and child greed to fulfill the requirmen
 <!-- Add your space complexity here, e.g. $$O(n)$$ -->
 
 # Code
-```
+```Python
 class Solution:
     def findContentChildren(self, g: List[int], s: List[int]) -> int:
         g.sort()
         s.sort()
-        i=j=0
-        ans=0
-        while i<len(s) and j<len(g):
-            if g[j] <= s[i]:
-                ans+=1
-                i+=1
-                j+=1
-            elif g[j] > s[i]:
-                i+=1
-        return ans
-        
+        cookieIndex, greedIndex = 0, 0
+        while cookieIndex < len(s) and greedIndex < len(g):
+            if g[greedIndex] <= s[cookieIndex]:
+                greedIndex+=1
+            cookieIndex+=1
+        return greedIndex
 ```
