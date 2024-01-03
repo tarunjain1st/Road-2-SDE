@@ -23,7 +23,7 @@ TC: O(N*M)
 <!-- Add your time complexity here, e.g. $$O(n)$$ -->
 
 - Space complexity:
-TC: O(1)
+SC: O(1)
 <!-- Add your space complexity here, e.g. $$O(n)$$ -->
 
 # Brute-Force Code
