@@ -26,7 +26,43 @@ TC: O(N*M)
 TC: O(1)
 <!-- Add your space complexity here, e.g. $$O(n)$$ -->
 
+# Brute-Force Code
+```Python      
+class Solution:
+    def numberOfBeams(self, bank: List[str]) -> int:
+        rows=len(bank)
+        cols=len(bank[0])
+        ans=0
+        row, nRow = 0, 1
+        while nRow < rows:
+            flag=False
+            for col in range(cols):
+                for nCol in range(cols):
+                    if bank[row][col] == '1' and bank[nRow][nCol]=='1':
+                        ans+=1
+                    if bank[nRow][nCol]=='1':
+                        flag=True
+            if flag:
+                row=nRow
+            nRow+=1
+        return ans
+```
+
 # Code
+```Python
+class Solution:
+    def numberOfBeams(self, bank: List[str]) -> int:
+        rows=len(bank)
+        bankSecDevice = []
+        ans=0
+        for i in range(rows):
+            if cnt:= bank[i].count('1'):
+                bankSecDevice.append(cnt)
+        for i in range(len(bankSecDevice)-1):
+            ans+=bankSecDevice[i]*bankSecDevice[i+1]
+        return ans      
+```
+
 ```Python
 class Solution:
     def numberOfBeams(self, bank: List[str]) -> int:
@@ -40,7 +76,46 @@ class Solution:
             if nextCnt: prevCnt=nextCnt
             nextCnt=bank[i].count('1')
             ans+=prevCnt*nextCnt
-        return ans
+        return ans        
+```
 
-        
+```Python
+class Solution:
+    def numberOfBeams(self, bank: List[str]) -> int:
+        rows=len(bank)
+        ans=0
+        row, nRow = 0, 1
+        while nRow < rows:
+            curCount=bank[row].count('1')
+            nxtCount=bank[nRow].count('1')
+            if nxtCount>0:
+                row=nRow
+            nRow+=1
+            ans+=curCount*nxtCount
+        return ans      
+```
+
+```Python
+class Solution:
+    def numberOfBeams(self, bank: List[str]) -> int:
+        rows=len(bank)
+        cols=len(bank[0])
+        ans=0
+        row, nRow = 0, 1
+        while nRow < rows:
+            flag=False
+            curCount=0
+            nxtCount=0
+            for col in range(cols):
+                if bank[row][col] == '1':
+                    curCount+=1
+            for nCol in range(cols):
+                if bank[nRow][nCol]=='1':
+                    nxtCount+=1
+                    flag=True
+            if flag:
+                row=nRow
+            nRow+=1
+            ans+=curCount*nxtCount
+        return ans     
 ```
