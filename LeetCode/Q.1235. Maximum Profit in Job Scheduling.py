@@ -1,4 +1,16 @@
-#Question link: https://leetcode.com/problems/maximum-profit-in-job-scheduling/description/
+'''Question link: https://leetcode.com/problems/maximum-profit-in-job-scheduling/description/
+the approach used in the provided code is a greedy algorithm with a priority queue (min-heap). Here's a summary of the approach:
+
+1. Sort the jobs based on their start times, ensuring they are in ascending order.
+2. Initialize an empty min-heap (priority queue) to keep track of the end times and maximum profits of the jobs.
+3. Iterate through the sorted jobs, and for each job:
+  * Pop elements from the min-heap where the end time is less than or equal to the current job's start time.
+  * Update the maximum profit by considering the maximum profit obtained so far and the profit of the current job.
+  * Push the current job's end time and the updated maximum profit into the min-heap.
+4. The final result is the maximum profit obtained after considering all the jobs.
+
+This approach efficiently handles the non-overlapping constraint of jobs and ensures that the algorithm considers the optimal combination of jobs to maximize the total profit.
+'''
 
 from heapq import heapify, heappop, heappush
 class Solution:
