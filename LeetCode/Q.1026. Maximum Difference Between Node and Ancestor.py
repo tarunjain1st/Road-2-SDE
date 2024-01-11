@@ -16,7 +16,6 @@ I approached the problem by first performing a depth-first traversal of the bina
 - Space complexity:
 🚀 SC: O(h), where h is max height of stack for recursion.
 <!-- Add your space complexity here, e.g. $$O(n)$$ -->
-'''
 
 # Code
 ```py
@@ -26,6 +25,22 @@ I approached the problem by first performing a depth-first traversal of the bina
 #         self.val = val
 #         self.left = left
 #         self.right = right
+class Solution:
+    def maxAncestorDiff(self, root: Optional[TreeNode]) -> int:
+        self.max_diff=0
+        self.tree_traversal(root, root.val, root.val)
+        return self.max_diff
+    
+    def tree_traversal(self, root, min_val, max_val):
+        if root == None: 
+            self.max_diff = max(self.max_diff, max_val-min_val)
+            return
+        min_val = min(min_val, root.val)
+        max_val = max(max_val, root.val)
+        self.tree_traversal(root.left, min_val, max_val)   
+        self.tree_traversal(root.right, min_val, max_val)
+```
+'''
 class Solution:
     def maxAncestorDiff(self, root: Optional[TreeNode]) -> int:
         self.max_val = float('-inf')
@@ -47,4 +62,3 @@ class Solution:
         self.max_val = max(self.max_val, abs(root.val-local_min), abs(root.val-local_max))
         return local_min, local_max
 
-```
