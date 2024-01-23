@@ -12,24 +12,36 @@ It explores different combinations of words, ensuring uniqueness through a set (
 Optimizations include pruning invalid paths and avoiding explicit subset generation for enhanced efficiency.
 '''
 
+from collections import Counter
+from typing import List
+
 class Solution:
     def maxLength(self, arr: List[str]) -> int:
-        string = set()
+        
+        def is_vaild(str1, str2):
+            # Check if two strings have unique characters
+            combined_freq = Counter(str1) + Counter(str2)
+            return max(combined_freq.values()) <= 1
 
-        def check_unique(string, s):
-            c = Counter(string) + Counter(s)
-            return False if max(c.values()) > 1 else True
-
-        def check_subsets(index):
-            if index == len(arr):
+        def max_len_subset(index, string):
+            # Recursive function to generate subsets and find maximum length
+            if index == N:
                 return len(string)
-            res = 0
-            if check_unique(string, arr[index]):
-                for c in arr[index]:
-                    string.add(c)
-                res = check_subsets(index + 1)
-                for c in arr[index]:
-                    string.remove(c)
-            return max(res, check_subsets(index + 1)) 
 
-        return check_subsets(0)
+            # Exclude the stringent string and move to the next index
+            res = max_len_subset(index + 1, string)
+
+            # Include the stringent string if it has unique characters
+            if is_vaild(string, arr[index]):
+                res = max(res, max_len_subset(index + 1, string + arr[index]))
+                
+            return res
+
+        N = len(arr)
+        return max_len_subset(0, '')
+
+# Example usage:
+# solution = Solution()
+# result = solution.maxLength(["un", "iq", "ue"])
+# print(result)
+
