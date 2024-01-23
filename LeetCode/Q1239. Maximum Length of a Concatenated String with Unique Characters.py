@@ -2,14 +2,17 @@
 link: https://leetcode.com/problems/maximum-length-of-a-concatenated-string-with-unique-characters/
 Q1239. Maximum Length of a Concatenated String with Unique Characters
 
-👉 Approach:
-In addressing the challenge of finding the maximum length of a concatenated string with unique characters, the approach utilizes backtracking. 
-It explores different combinations of words, ensuring uniqueness through a set (unique_chars) and a helper function (is_unique). The code efficiently prunes invalid paths, maintaining linear space complexity.
+✨ Approach:
+The solution leverages a recursive approach for generating subsets and dynamically updating the maximum length.
+The has_unique function efficiently checks for unique characters, enabling a more concise implementation.
 
-📈 SC: O(n) - Linear space complexity as the set (unique_chars) stores unique characters.
-⏰ TC: Exponential - Due to recursive backtracking, the time complexity exhibits an exponential growth.
+⏱️ Time Complexity: O(2^n), due to the recursive nature of subset generation. However, early termination occurs when duplicate characters are encountered, optimizing certain cases.
+💾 Space Complexity: O(n), where n is the length of the input array. This arises from the recursive call stack.
 
-Optimizations include pruning invalid paths and avoiding explicit subset generation for enhanced efficiency.
+🧐 Insights:
+The algorithm showcases a trade-off between simplicity and efficiency.
+Optimal for small inputs, but may experience performance issues with larger datasets due to its exponential time complexity.
+Dynamic programming or bitwise manipulation could offer alternative approaches for further optimization.
 '''
 
 from collections import Counter
