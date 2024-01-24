@@ -6,8 +6,6 @@ Q1457. Pseudo-Palindromic Paths in a Binary Tree
 Algorithm employs in-order traversal to navigate binary trees, concurrently tracking node occurrences with a frequency dictionary. 
 Upon reaching leaf nodes, we check for valid a palindrome paths with current frequency distribution, and using Backtracking it guarantees proper frequency state.
 
-
-
 1️⃣ In-Order Traversal: Navigate the binary tree, keeping track of node occurrences using a frequency dictionary.
 2️⃣ Leaf Node Check: When reaching a leaf node, verify if the frequency pattern forms a pseudo-palindrome.
 3️⃣ Backtracking: Decrement the node contribution before backtracking to maintain traversal integrity.
