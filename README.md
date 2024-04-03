@@ -1,4 +1,5 @@
 # My personalized DSA-Roadmap
+A complete 4 months plan with study and practice to get your dreams come true.
 
 
 ## Day 1-6: Introduction to Programming and Basics
